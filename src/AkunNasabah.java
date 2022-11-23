@@ -6,8 +6,9 @@
 public class AkunNasabah extends Akun
 {
     private String nomorRekening; // account number
-    private double saldo; // saldo yang tersedia yang dapat ditarik
-    private double totalSaldo; // saldo yang tersedia untuk ditarik + saldo yang belum ditarik
+//    private double saldoYangTersedia; // saldo yang tersedia yang dapat ditarik
+//    private double totalSaldo; // saldo yang tersedia untuk ditarik + saldo yang belum ditarik
+    private int saldo;
 
     public AkunNasabah(String username, String nomorRekening, String pin, int saldoYangTersedia, int totalSaldo) {
         super( username, pin);
