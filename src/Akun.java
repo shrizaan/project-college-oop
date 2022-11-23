@@ -12,7 +12,7 @@ public class Akun {
     }
 
     // determines whether a user-specified PIN matches PIN in Account
-    public boolean validatePIN(String userPIN)
+    public boolean validasiPIN(String userPIN)
     {
         if (userPIN == getPin())
             return true;

@@ -6,10 +6,10 @@
 public class AkunNasabah extends Akun
 {
     private String nomorRekening; // account number
-    private double saldoYangTersedia; // saldo yang tersedia yang dapat ditarik
+    private double saldo; // saldo yang tersedia yang dapat ditarik
     private double totalSaldo; // saldo yang tersedia untuk ditarik + saldo yang belum ditarik
 
-    public AkunNasabah(String username, String nomorRekening, String pin) {
+    public AkunNasabah(String username, String nomorRekening, String pin, int saldoYangTersedia, int totalSaldo) {
         super( username, pin);
         setNomorRekening(nomorRekening);
         setSaldoYangTersedia(saldoYangTersedia);
