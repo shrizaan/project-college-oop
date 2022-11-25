@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class SetorTunai extends Transaksi{
-    private String jumlahSetoran;
-    private String konfirmasiJumlahSetoran;
+public class SetorTunai extends Transaksi {
+    private int jumlahSetoran;
+    private int konfirmasiJumlahSetoran;
 
     public SetorTunai(AkunNasabah objekAkunNasabah) {
         super(objekAkunNasabah);
@@ -10,21 +10,26 @@ public class SetorTunai extends Transaksi{
 
     public void prosesTransaksi() {
         Scanner input = new Scanner(System.in);
-        while(true) {
-            System.out.println("Masukkan jumlah setoran: ");
-            jumlahSetoran = input.nextLine();
-            System.out.println("Konfirmasi jumlah setoran: ");
-            konfirmasiJumlahSetoran = input.nextLine();
-            if (jumlahSetoran.equals(konfirmasiJumlahSetoran)) {
-                getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() + Integer.parseInt(jumlahSetoran));
-                System.out.println("Setoran berhasil");
-                System.out.println("Jumlah setoran: " + formatUang(Integer.parseInt(jumlahSetoran)));
-                System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
-                break;
+        while (true) {
+            System.out.print("\nMasukkan jumlah setoran: ");
+            jumlahSetoran = input.nextInt();
+            System.out.print("Konfirmasi jumlah setoran: ");
+            konfirmasiJumlahSetoran = input.nextInt();
+            if (jumlahSetoran >= 100000) {
+                if (jumlahSetoran == konfirmasiJumlahSetoran) {
+                    getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() + jumlahSetoran);
+                    System.out.println("Setoran berhasil");
+                    System.out.println("Jumlah setoran: " + formatUang(jumlahSetoran));
+                    System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
+                    break;
+                } else {
+                    System.out.println("\nJumlah setoran tidak sama");
+                    break;
+                }
             } else {
-                System.out.println("Jumlah setoran tidak sama");
-                break;
+                System.out.println("\nJumlah setoran minimal Rp100.000");
             }
+
         }
     }
 }
