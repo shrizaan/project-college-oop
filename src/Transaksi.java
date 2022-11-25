@@ -5,6 +5,7 @@ public abstract class  Transaksi implements FormatUang {
 
     private String nomorRekening;
     private String pin;
+    private DatabaseAkun databaseAkun;
 
     public Transaksi(String nomorRekening, DatabaseAkun databaseAkun) {
         this.nomorRekening = nomorRekening;

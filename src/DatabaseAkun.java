@@ -5,10 +5,12 @@ import java.util.Iterator;
 // Represents the bank account information database
 
 public class DatabaseAkun {
-    static ArrayList<Akun> databaseAkun = new ArrayList<>(); // array of Accounts
+//    alasan kami menggunakan tipe data arraylist karena tipe data arraylist lebih mudah untuk di manipulasi seperti menambahkan data tanpa perlu mengkhawatirkan ukuran array nya.
+//    selain itu alasan kami tidak menjadi kannya sebagai attribute karena karena kami ingin variabel ini tidak dapat diakses oleh class lain.
+    private static ArrayList<Akun> databaseAkun = new ArrayList<>(); // array of Accounts
 
     public DatabaseAkun() {
-        //The original array has been changed into an arraylist, this makes it easier to add/delete from the database
+        //membuat akun nasabah dan admin
         Akun AkunNasabah1 = new AkunNasabah("Shahrizan", "12345", "11111", 10_000_000);
         Akun AkunNasabah2 = new AkunNasabah("Alif Putra Cira", "98765", "22222", 20_000_000);
         Akun AkunNasabah3 = new AkunNasabah("Raffi Firdaus", "19234", "33333", 30_000_000 );
@@ -21,14 +23,14 @@ public class DatabaseAkun {
         databaseAkun.add(AkunAdmin5);
     }
 
-    public AkunNasabah getAkun(String accountnumber) {
+    public AkunNasabah getAkun(String nomorRekening, String pin) {
         // loop through accounts searching for matching account number
         for (Akun akun : databaseAkun) {
             // jika akun merupakan AkunNasabah, return akun
             if (akun instanceof AkunNasabah) {
                 AkunNasabah objAkunNasabah = (AkunNasabah) akun;
-                // return current account if match found
-                if (objAkunNasabah.getNomorRekening().equals(accountnumber)) {
+                // return akun jika cocok dengan yang ada di database akun
+                if (objAkunNasabah.validasiNomorRekening(nomorRekening) && objAkunNasabah.validasiPin(pin)) {
                     return objAkunNasabah;
                 }
             }
