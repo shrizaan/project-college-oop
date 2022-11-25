@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class DatabaseAkun {
 //    alasan kami menggunakan tipe data arraylist karena tipe data arraylist lebih mudah untuk di manipulasi seperti menambahkan data tanpa perlu mengkhawatirkan ukuran array nya.
