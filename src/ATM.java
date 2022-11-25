@@ -1,43 +1,31 @@
+import javax.xml.crypto.Data;
 import java.util.Scanner;
 
-public class ATM extends DatabaseAkun implements  LanjutLagi, Keluar {
+public class ATM extends DatabaseAkun implements LanjutLagi, Keluar {
     private boolean lanjutLagi;
 
-    private AkunNasabah objekAkunNasabah;
+    private  AkunNasabah objekAkunNasabah;
 
-    public static void login() {
-        Scanner scan = new Scanner(System.in);
+    public void login() {
+        Scanner input = new Scanner(System.in);
         boolean transaksiSelesai;
-        do {
-            System.out.print("Masukkan nomor kartu: ");
-            String nomorRekening = scan.next();
-            System.out.print("Masukkan PIN: ");
-            String pin = scan.next();
+        while (true) {
+            System.out.println("Masukkan nomor kartu: ");
+            String nomorRekening = input.next();
+            System.out.println("Masukkkan nomor pin: ");
+            String pin = input.next();
 
             DatabaseAkun databaseAkun = new DatabaseAkun();
-            try {
-                AkunNasabah akunNasabah = databaseAkun.getAkun(nomorRekening, pin);
-                if (akunNasabah.validasiPin(pin) && akunNasabah.validasiNomorRekening(nomorRekening)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } catch (NullPointerException e) {
-                return false;
-            }
-
-            if (validasiAkunNasabah(nomorRekening, pin)) {
-                menuPilihan(nomorRekening, pin);
-                transaksiSelesai = true;
+            objekAkunNasabah = databaseAkun.getAkun(nomorRekening, pin);
+            if (objekAkunNasabah != null) {
+                menuPilihan(objekAkunNasabah);
             } else {
-                System.out.println("Nomor rekening atau PIN salah");
-                transaksiSelesai = false;
+                System.out.println("Nomor Rekening atau PIN tidak ada di database!");
             }
-
-        } while (!transaksiSelesai);
+        }
     }
 
-    public void menuPilihan(String nomorRekening, String pin) {
+    public void menuPilihan(AkunNasabah objekAkunNasabah) {
         Scanner scan = new Scanner(System.in);
         boolean lanjut = true;
 
@@ -93,7 +81,7 @@ public class ATM extends DatabaseAkun implements  LanjutLagi, Keluar {
         System.exit(0);
     }
 
-    public  boolean lanjutLagi() {
+    public boolean lanjutLagi() {
         boolean berhasil = false;
 
         do {
@@ -101,7 +89,7 @@ public class ATM extends DatabaseAkun implements  LanjutLagi, Keluar {
             Scanner scan = new Scanner(System.in);
             String pilihan = scan.next();
 
-            switch(pilihan) {
+            switch (pilihan) {
                 case "y":
                     lanjutLagi = true;
                     berhasil = false;
