@@ -1,24 +1,22 @@
 import javax.xml.crypto.Data;
 import java.util.Scanner;
 
-public class ATM extends DatabaseAkun implements LanjutLagi, Keluar {
-    private boolean lanjutLagi;
-
+public class ATM extends DatabaseAkun {
     private  AkunNasabah objekAkunNasabah;
 
     public void login() {
         Scanner input = new Scanner(System.in);
-        boolean transaksiSelesai;
         while (true) {
-            System.out.println("Masukkan nomor kartu: ");
+            System.out.print("Masukkan nomor kartu: ");
             String nomorRekening = input.next();
-            System.out.println("Masukkkan nomor pin: ");
+            System.out.print("Masukkkan nomor pin: ");
             String pin = input.next();
 
             DatabaseAkun databaseAkun = new DatabaseAkun();
             objekAkunNasabah = databaseAkun.getAkun(nomorRekening, pin);
             if (objekAkunNasabah != null) {
                 menuPilihan(objekAkunNasabah);
+                break;
             } else {
                 System.out.println("Nomor Rekening atau PIN tidak ada di database!");
             }
@@ -29,7 +27,7 @@ public class ATM extends DatabaseAkun implements LanjutLagi, Keluar {
         Scanner scan = new Scanner(System.in);
         boolean lanjut = true;
 
-        do {
+        while (true) {
             System.out.println("===================================");
             System.out.println("1. Cek Saldo");
             System.out.println("2. Tarik Tunai");
@@ -67,43 +65,30 @@ public class ATM extends DatabaseAkun implements LanjutLagi, Keluar {
                     lanjut = lanjutLagi();
                     break;
                 case "6":
-                    keluar();
-                    lanjut = false;
+                    System.out.println("\nTerima kasih telah menggunakan ATM Bank WGO\n");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid!");
             }
-        } while (lanjut);
+        }
     }
 
-    public void keluar() {
-        System.out.println("\nTerima kasih telah menggunakan ATM Bank WGO\n");
-        System.exit(0);
-    }
 
     public boolean lanjutLagi() {
-        boolean berhasil = false;
-
-        do {
+        while (true) {
             System.out.println("\nApakah anda ingin melakukan transaksi lainnya? (y/n)");
             Scanner scan = new Scanner(System.in);
             String pilihan = scan.next();
 
             switch (pilihan) {
                 case "y":
-                    lanjutLagi = true;
-                    berhasil = false;
-                    break;
+                    return true;
                 case "n":
-                    lanjutLagi = false;
-                    berhasil = false;
-                    keluar();
-                    break;
+                    System.exit(0);
+                    return false;
                 default:
                     System.out.println("\nPilihan tidak valid!");
-                    berhasil = true;
             }
-        } while (berhasil);
-        return lanjutLagi;
+        }
     }
 }
