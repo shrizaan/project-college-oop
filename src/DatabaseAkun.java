@@ -14,8 +14,8 @@ public class DatabaseAkun {
         Akun AkunNasabah1 = new AkunNasabah("Shahrizan", "12345", "11111", 10_000_000);
         Akun AkunNasabah2 = new AkunNasabah("Alif Putra Cira", "98765", "22222", 20_000_000);
         Akun AkunNasabah3 = new AkunNasabah("Raffi Firdaus", "19234", "33333", 30_000_000 );
-        Akun AkunAdmin4 = new AkunAdmin("Nanda Aulia Shofiah", "00000", true);
-        Akun AkunAdmin5 = new AkunAdmin("Ishlah Putri Ariyani", "99999", true);
+        Akun AkunAdmin4 = new AkunAdmin("Nanda Aulia Shofiah", "00000", "12022", true);
+        Akun AkunAdmin5 = new AkunAdmin("Ishlah Putri Ariyani", "99999", "20045", true);
         databaseAkun.add(AkunNasabah1);
         databaseAkun.add(AkunNasabah2);
         databaseAkun.add(AkunNasabah3);
