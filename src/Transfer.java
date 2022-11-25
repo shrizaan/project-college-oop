@@ -1,55 +1,39 @@
+import java.util.Scanner;
+
 public class Transfer extends Transaksi {
     private String nomorRekeningTujuan;
-    private String jumlahTransfer;
-    private String konfirmasiJumlahTransfer;
+    private int jumlahTransfer;
+    private int konfirmasiJumlahTransfer;
 
-    public Transfer(String nomorRekening, DatabaseAkun databaseAkun) {
-        super(nomorRekening, databaseAkun);
+    public Transfer(AkunNasabah objekAkunNasabah) {
+        super(objekAkunNasabah);
     }
 
-    public void setNomorRekeningTujuan(String nomorRekeningTujuan) {
-        this.nomorRekeningTujuan = nomorRekeningTujuan;
-    }
-
-    public void setJumlahTransfer(String jumlahTransfer) {
-        this.jumlahTransfer = jumlahTransfer;
-    }
-
-    public void setKonfirmasiJumlahTransfer(String konfirmasiJumlahTransfer) {
-        this.konfirmasiJumlahTransfer = konfirmasiJumlahTransfer;
-    }
-
-    public String getNomorRekeningTujuan() {
-        return nomorRekeningTujuan;
-    }
-
-    public String getJumlahTransfer() {
-        return jumlahTransfer;
-    }
-
-    @Override
     public void prosesTransaksi() {
-        AkunNasabah userAccount = getDatabaseAkun().getAkun(getNomorRekening());
-        AkunNasabah tujuanAccount = getDatabaseAkun().getAkun(getNomorRekeningTujuan());
+        Scanner input = new Scanner(System.in);
+        System.out.println("Masukkan nomor rekening tujuan: ");
+        nomorRekeningTujuan = input.nextLine();
 
-        if (tujuanAccount != null) {
-            if (userAccount.getSaldo() >= Integer.parseInt(getJumlahTransfer())) {
-                if (getJumlahTransfer().equals(getKonfirmasiJumlahTransfer())) {
-                    userAccount.setSaldo(userAccount.getSaldo() - Integer.parseInt(getJumlahTransfer()));
-                    tujuanAccount.setSaldo(tujuanAccount.getSaldo() + Integer.parseInt(getJumlahTransfer()));
-                    System.out.println("Transfer berhasil");
+        while (true) {
+            System.out.println("Masukkan jumlah transfer: ");
+            jumlahTransfer = input.nextInt();
+            System.out.println("Konfirmasi jumlah transfer: ");
+            konfirmasiJumlahTransfer = input.nextInt();
+            if (jumlahTransfer == konfirmasiJumlahTransfer) {
+                if (jumlahTransfer > getObjAkunNasabah().getSaldo()) {
+                    System.out.println("Maaf, saldo anda tidak mencukupi");
+                    break;
                 } else {
-                    System.out.println("Jumlah transfer tidak sama");
+                    getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() - jumlahTransfer);
+                    System.out.println("Transfer berhasil");
+                    System.out.println("Nomor Rekening Tujuan: " + nomorRekeningTujuan);
+                    System.out.println("Jumlah transfer: " + formatUang(jumlahTransfer));
+                    System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
+                    break;
                 }
             } else {
-                System.out.println("Saldo anda tidak mencukupi");
+                System.out.println("Jumlah transfer tidak sama");
             }
-        } else {
-            System.out.println("Nomor rekening tujuan tidak ditemukan");
         }
-    }
-
-    private String getKonfirmasiJumlahTransfer() {
-        return konfirmasiJumlahTransfer;
     }
 }
