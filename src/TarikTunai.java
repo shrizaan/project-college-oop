@@ -20,7 +20,7 @@ public class TarikTunai extends Transaksi {
             if (jumlahPenarikan == konfirmasiJumlahPenarikan) {
                 if (jumlahPenarikan >= 100_000){
                     if (jumlahPenarikan > getObjAkunNasabah().getSaldo()) {
-                        System.out.println("Maaf, saldo anda tidak mencukupi");
+                        System.out.println("\nMaaf, saldo anda tidak mencukupi");
                         break;
                     } else {
                         getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() - jumlahPenarikan);
@@ -32,10 +32,8 @@ public class TarikTunai extends Transaksi {
                 } else {
                     System.out.println("\nJumlah penarikan minimal Rp100.000");
                 }
-                break;
             } else {
                 System.out.println("\nJumlah penarikan tidak sama");
-                break;
             }
         }
     }

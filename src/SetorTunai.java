@@ -24,7 +24,6 @@ public class SetorTunai extends Transaksi {
                     break;
                 } else {
                     System.out.println("\nJumlah setoran tidak sama");
-                    break;
                 }
             } else {
                 System.out.println("\nJumlah setoran minimal Rp100.000");
