@@ -1,16 +1,16 @@
 import java.text.DecimalFormat;
 
-public abstract class  Transaksi implements FormatUang {
+public abstract class Transaksi implements FormatUang {
     DecimalFormat moneyFormat = new DecimalFormat("'Rp'###,##0.00");
 
-    private AkunNasabah objAkunNasabah ;
+    private AkunNasabah objekAkunNasabah ;
 
-    public Transaksi(AkunNasabah objAkunNasabah) {
-        this.objAkunNasabah = objAkunNasabah;
+    public Transaksi(AkunNasabah objekAkunNasabah) {
+        this.objekAkunNasabah = objekAkunNasabah;
     }
 
     public AkunNasabah getObjAkunNasabah() {
-        return objAkunNasabah;
+        return objekAkunNasabah;
     }
 
     public String formatUang(int value) {
