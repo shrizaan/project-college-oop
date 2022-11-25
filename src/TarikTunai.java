@@ -28,7 +28,7 @@ public class TarikTunai extends Transaksi {
                         getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() - jumlahPenarikan);
                         System.out.println("\nPenarikan berhasil");
                         System.out.println("Jumlah penarikan: " + formatUang(jumlahPenarikan));
-                        System.out.println("Saldo anda saat ini adalah: " + formatUang(jumlahPenarikan));
+                        System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
                         break;
                     }
                 } else {
