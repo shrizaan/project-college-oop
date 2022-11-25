@@ -25,12 +25,13 @@ public class ATM extends DatabaseAkun {
 
     public void menuPilihan(AkunNasabah objekAkunNasabah) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("\n|====================================|");
-        System.out.println("  Nama         : " + objekAkunNasabah.getUsername());
-        System.out.println("  No. Rekening : " + objekAkunNasabah.getNomorRekening());
-        System.out.println("|====================================|");
 
         while (true) {
+            System.out.println("\n|====================================|");
+            System.out.println("  Nama         : " + objekAkunNasabah.getUsername());
+            System.out.println("  No. Rekening : " + objekAkunNasabah.getNomorRekening());
+            System.out.println("|====================================|");
+
             System.out.println("\t1. Cek Saldo");
             System.out.println("\t2. Tarik Tunai");
             System.out.println("\t3. Setor Tunai");
@@ -68,9 +69,9 @@ public class ATM extends DatabaseAkun {
                     break;
                 case "6":
                     System.out.println("\nTerima kasih telah menggunakan ATM Bank WKG\n");
-                    break;
+                    System.exit(0);
                 default:
-                    System.out.println("Pilihan tidak valid!");
+                    System.out.println("\nPilihan tidak valid!\n");
             }
         }
     }

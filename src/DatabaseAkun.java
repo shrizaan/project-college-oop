@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-// BankDatabase.java
-// Represents the bank account information database
-
 public class DatabaseAkun {
 //    alasan kami menggunakan tipe data arraylist karena tipe data arraylist lebih mudah untuk di manipulasi seperti menambahkan data tanpa perlu mengkhawatirkan ukuran array nya.
 //    selain itu alasan kami tidak menjadi kannya sebagai attribute karena karena kami ingin variabel ini tidak dapat diakses oleh class lain.
@@ -24,18 +21,14 @@ public class DatabaseAkun {
     }
 
     public AkunNasabah getAkun(String nomorRekening, String pin) {
-        // loop through accounts searching for matching account number
         for (Akun akun : databaseAkun) {
-            // jika akun merupakan AkunNasabah, return akun
             if (akun instanceof AkunNasabah) {
                 AkunNasabah objAkunNasabah = (AkunNasabah) akun;
-                // return akun jika cocok dengan yang ada di database akun
                 if (objAkunNasabah.validasiNomorRekening(nomorRekening) && objAkunNasabah.validasiPin(pin)) {
                     return objAkunNasabah;
                 }
             }
-
-        } // end for
-        return null; // if no matching account was found, return null
-    } // end method getAkun
+        }
+        return null;
+    }
 }
