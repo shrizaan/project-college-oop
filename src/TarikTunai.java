@@ -1,34 +1,29 @@
 import java.util.Scanner;
 
 public class TarikTunai extends Transaksi {
-    private String jumlahPenarikan;
-    public TarikTunai(String nomorRekening, DatabaseAkun atmDatabase) {
-        super(nomorRekening, atmDatabase);
+    private int jumlahPenarikan;
+    public TarikTunai(AkunNasabah objekAkunNasabah) {
+        super(objekAkunNasabah);
     }
 
-    // debits an amount from the account
-    public void debit(double amount)
-    {
-
-    } // end method debit
-
-    @Override
     public void prosesTransaksi() {
         Scanner input = new Scanner(System.in);
-        AkunNasabah akunNasabah = getDatabaseAkun().getAkun(getNomorRekening());
 
         System.out.println("\n========================");
-        System.out.println("Saldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
+        System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
         System.out.print("Masukkan jumlah penarikan: ");
-        jumlahPenarikan = input.nextLine();
-
-        int jumlahPenarikanInt = Integer.parseInt(jumlahPenarikan);
-        if (jumlahPenarikanInt > akunNasabah.getSaldo()) {
-            System.out.println("Maaf, saldo anda tidak mencukupi");
+        jumlahPenarikan = input.nextInt();
+        if (jumlahPenarikan >= 100_000){
+            if (jumlahPenarikan > getObjAkunNasabah().getSaldo()) {
+                System.out.println("Maaf, saldo anda tidak mencukupi");
+            } else {
+                getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() - jumlahPenarikan);
+                System.out.println("\nPenarikan berhasil");
+                System.out.println("Jumlah penarikan: " + formatUang(jumlahPenarikan));
+                System.out.println("Saldo anda saat ini adalah: " + formatUang(jumlahPenarikan));
+            }
         } else {
-            akunNasabah.setSaldo(akunNasabah.getSaldo() - jumlahPenarikanInt);
-            System.out.println("\nPenarikan berhasil");
-            System.out.println("Saldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
+            System.out.println("Jumlah penarikan minimal Rp100.000");
         }
     }
 }
