@@ -16,7 +16,7 @@ public class ATM extends DatabaseAkun implements  LanjutLagi, Keluar {
 
             DatabaseAkun databaseAkun = new DatabaseAkun();
             try {
-                AkunNasabah akunNasabah = databaseAkun.getAkun(nomorRekening);
+                AkunNasabah akunNasabah = databaseAkun.getAkun(nomorRekening, pin);
                 if (akunNasabah.validasiPin(pin) && akunNasabah.validasiNomorRekening(nomorRekening)) {
                     return true;
                 } else {
@@ -37,10 +37,6 @@ public class ATM extends DatabaseAkun implements  LanjutLagi, Keluar {
         } while (!transaksiSelesai);
     }
 
-    public boolean validasiAkunNasabah(String nomorRekening, String pin) {
-
-    }
-
     public void menuPilihan(String nomorRekening, String pin) {
         Scanner scan = new Scanner(System.in);
         boolean lanjut = true;
@@ -58,27 +54,27 @@ public class ATM extends DatabaseAkun implements  LanjutLagi, Keluar {
 
             switch (transaksi) {
                 case "1":
-                    CekSaldo objCekSaldo = new CekSaldo(nomorRekening, new DatabaseAkun());
+                    CekSaldo objCekSaldo = new CekSaldo(objekAkunNasabah);
                     objCekSaldo.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
                 case "2":
-                    TarikTunai objTarikTunai = new TarikTunai(nomorRekening, new DatabaseAkun());
+                    TarikTunai objTarikTunai = new TarikTunai(objekAkunNasabah);
                     objTarikTunai.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
                 case "3":
-                    SetorTunai objSetorTunai = new SetorTunai(nomorRekening, new DatabaseAkun());
+                    SetorTunai objSetorTunai = new SetorTunai(objekAkunNasabah);
                     objSetorTunai.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
                 case "4":
-                    Transfer objTransfer = new Transfer(nomorRekening, new DatabaseAkun());
+                    Transfer objTransfer = new Transfer(objekAkunNasabah);
                     objTransfer.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
                 case "5":
-                    GantiPIN objGantiPIN = new GantiPIN(nomorRekening, new DatabaseAkun(), pin);
+                    GantiPIN objGantiPIN = new GantiPIN(objekAkunNasabah);
                     objGantiPIN.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
