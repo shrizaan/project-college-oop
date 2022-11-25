@@ -28,14 +28,6 @@ public class AkunNasabah extends Akun
             this.saldo = totalSaldo;
     }
 
-    public String getNomorRekening()
-    {
-        return nomorRekening;
-    }
-
-    public void setNomorRekening(String nomorRekening) {
-        this.nomorRekening = nomorRekening;
-    }
 
 }
 

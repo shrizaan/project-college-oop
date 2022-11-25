@@ -1,12 +1,13 @@
 public class Akun {
     private String username;
 
+    private String nomorRekening;
     private String pin; //
 
-    public Akun(String username, String pin) {
+    public Akun(String username, String nomorRekening, String pin) {
+        setNomorRekening(nomorRekening);
         setUsername(username);
         setPin(pin);
-
     }
 
     public boolean validasiPin(String pin) {
@@ -17,6 +18,16 @@ public class Akun {
             return false;
         }
     }
+
+    public String getNomorRekening()
+    {
+        return nomorRekening;
+    }
+
+    public void setNomorRekening(String nomorRekening) {
+        this.nomorRekening = nomorRekening;
+    }
+
 
     public String getPin() {
         return pin;
