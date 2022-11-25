@@ -10,7 +10,7 @@ public class AkunAdmin extends Akun {
         return isAdmin;
     }
 
-    public void setAdmin(int admin) {
+    public void setAdmin(boolean admin) {
         this.isAdmin = isAdmin;
     }
 }

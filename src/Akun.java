@@ -1,28 +1,29 @@
 public class Akun {
     private String username;
 
-    private String pin; // PIN for authentication
+    private String pin; //
 
-
-    public Akun(String username, String pin)
-    {
+    public Akun(String username, String pin) {
         setUsername(username);
         setPin(pin);
 
     }
 
-    // determines whether a user-specified PIN matches PIN in Account
-    public boolean validasiPIN(String userPIN)
-    {
-        if (userPIN == getPin())
+    public boolean validasiPin(String pin) {
+        if (pin.equals(getPin())) {
             return true;
-        else
+        }
+        else {
             return false;
-    } // end method validatePIN
+        }
+    }
 
-
-    public String getPin(){
+    public String getPin() {
         return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
     public String getUsername() {
@@ -31,10 +32,6 @@ public class Akun {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public void setPin(String pin) {
-        this.pin = pin;
     }
 
 }

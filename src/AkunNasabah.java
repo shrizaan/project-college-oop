@@ -1,61 +1,40 @@
-
-
 // AkunNasabah.java
-// Merepresentasikan akun bank
+// Merepresentasikan akun nasabah
 
 public class AkunNasabah extends Akun
 {
-    private String nomorRekening; // account number
-//    private double saldoYangTersedia; // saldo yang tersedia yang dapat ditarik
-//    private double totalSaldo; // saldo yang tersedia untuk ditarik + saldo yang belum ditarik
+    private String nomorRekening;
     private int saldo;
 
-    public AkunNasabah(String username, String nomorRekening, String pin, int saldoYangTersedia, int totalSaldo) {
+    public AkunNasabah(String username, String nomorRekening, String pin, int saldo) {
         super( username, pin);
         setNomorRekening(nomorRekening);
-        setSaldoYangTersedia(saldoYangTersedia);
-        setTotalSaldo(totalSaldo);
+        setSaldo(saldo);
     }
 
-    // credits an amount to the account
-    public void credit(double amount)
-    {
-        setTotalSaldo(getTotalSaldo() + amount); // add to total balance
-    } // end method credit
+    public boolean validasiNomorRekening(String nomorRekening) {
+        if (nomorRekening.equals(getNomorRekening()))
+            return true;
+        else
+            return false;
+    }
 
-    // debits an amount from the account
-    public void debit(double amount)
-    {
-        setSaldoYangTersedia(getSaldoYangTersedia() - amount); // subtract from available balance
-        setTotalSaldo(getTotalSaldo() - amount); // subtract from total balance
-    } // end method debit
+
+    public int getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(int totalSaldo) {
+            this.saldo = totalSaldo;
+    }
 
     public String getNomorRekening()
     {
         return nomorRekening;
-    } // end method getAccountNumber
-
-    public double getSaldoYangTersedia()
-    {
-        return saldoYangTersedia;
-    } // end getAvailableBalance
-
-    // returns the total balance
-    public double getTotalSaldo()
-    {
-        return totalSaldo;
-    } // end method getTotalBalance
+    }
 
     public void setNomorRekening(String nomorRekening) {
         this.nomorRekening = nomorRekening;
-    }
-
-    public void setSaldoYangTersedia(double saldoYangTersedia) {
-        this.saldoYangTersedia = saldoYangTersedia;
-    }
-
-    public void setTotalSaldo(double totalSaldo) {
-        this.totalSaldo = totalSaldo;
     }
 
 }

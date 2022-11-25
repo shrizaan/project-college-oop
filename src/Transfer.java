@@ -3,8 +3,8 @@ public class Transfer extends Transaksi {
     private String jumlahTransfer;
     private String konfirmasiJumlahTransfer;
 
-    public Transfer(String nomorRekening, DatabaseAkun atmDatabase) {
-        super(nomorRekening, atmDatabase);
+    public Transfer(String nomorRekening, DatabaseAkun databaseAkun) {
+        super(nomorRekening, databaseAkun);
     }
 
     public void setNomorRekeningTujuan(String nomorRekeningTujuan) {
@@ -25,5 +25,31 @@ public class Transfer extends Transaksi {
 
     public String getJumlahTransfer() {
         return jumlahTransfer;
+    }
+
+    @Override
+    public void execute() {
+        AkunNasabah userAccount = getDatabaseAkun().getAkun(getNomorRekening());
+        AkunNasabah tujuanAccount = getDatabaseAkun().getAkun(getNomorRekeningTujuan());
+
+        if (tujuanAccount != null) {
+            if (userAccount.getSaldo() >= Integer.parseInt(getJumlahTransfer())) {
+                if (getJumlahTransfer().equals(getKonfirmasiJumlahTransfer())) {
+                    userAccount.setSaldo(userAccount.getSaldo() - Integer.parseInt(getJumlahTransfer()));
+                    tujuanAccount.setSaldo(tujuanAccount.getSaldo() + Integer.parseInt(getJumlahTransfer()));
+                    System.out.println("Transfer berhasil");
+                } else {
+                    System.out.println("Jumlah transfer tidak sama");
+                }
+            } else {
+                System.out.println("Saldo anda tidak mencukupi");
+            }
+        } else {
+            System.out.println("Nomor rekening tujuan tidak ditemukan");
+        }
+    }
+
+    private String getKonfirmasiJumlahTransfer() {
+        return konfirmasiJumlahTransfer;
     }
 }

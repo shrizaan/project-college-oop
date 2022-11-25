@@ -1,23 +1,37 @@
+import java.util.Scanner;
+
 public class GantiPIN extends Transaksi {
     private String pinLama;
     private String pinBaru;
     private String konfirmasiPinBaru;
 
-    public GantiPIN(String nomorRekening, DatabaseAkun atmDatabase) {
-        super(nomorRekening, atmDatabase);
+    public GantiPIN(String nomorRekening, DatabaseAkun databaseAkun, String PIN) {
+        super(nomorRekening, databaseAkun);
+        this.pinLama = PIN;
     }
 
-    @Override
     public void execute() {
-        Akun userAccount = getDatabaseAkun().getAkun(getNomorRekening());
-        userAccount.setPIN(pinBaru);
-    }
+        AkunNasabah akunNasabah = getDatabaseAkun().getAkun(getNomorRekening());
+        System.out.println("Masukkan PIN lama: ");
+        Scanner input = new Scanner(System.in);
+        pinLama = input.nextLine();
 
-    public void setPinLama(String pinLama) {
-        this.pinLama = pinLama;
-    }
+        if (pinLama.equals(akunNasabah.getPin())) {
+            System.out.println("Masukkan PIN baru: ");
+            pinBaru = input.nextLine();
+            System.out.println("Konfirmasi PIN baru: ");
+            konfirmasiPinBaru = input.nextLine();
 
-    public void setPinBaru(String pinBaru) {
-        this.pinBaru = pinBaru;
+            if (pinBaru.equals(konfirmasiPinBaru)) {
+                akunNasabah.setPin(pinBaru);
+                System.out.println("PIN berhasil diganti");
+            } else {
+                System.out.println("PIN baru tidak sama");
+            }
+
+        } else {
+            System.out.println("PIN lama salah");
+        }
+        akunNasabah.setPin(pinBaru);
     }
 }
