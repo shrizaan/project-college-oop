@@ -1,13 +1,19 @@
 public class CekSaldo extends Transaksi {
-    AkunNasabah akunNasabah;
-
-    public CekSaldo(String nomorRekening, DatabaseAkun databaseAkun) {
-        super(nomorRekening, databaseAkun);
+    private int saldoObjekNasabah;
+    public CekSaldo(AkunNasabah objAkunNasabah) {
+        super(objAkunNasabah);
     }
 
-    @Override
+    public void setSaldoObjekNasabah(int saldoObjekNasabah) {
+        this.saldoObjekNasabah = saldoObjekNasabah;
+    }
+
+    public int getSaldoObjekNasabah() {
+        return saldoObjekNasabah;
+    }
+
     public void prosesTransaksi() {
-        this.akunNasabah = getDatabaseAkun().getAkun(getNomorRekening());
-        System.out.println("\nSaldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
+        setSaldoObjekNasabah(getObjAkunNasabah().getSaldo());
+        System.out.println("\nSaldo anda saat ini adalah: " + formatUang(getSaldoObjekNasabah()));
     }
 }

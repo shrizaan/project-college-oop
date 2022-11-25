@@ -9,6 +9,10 @@ public abstract class  Transaksi implements FormatUang {
         this.objAkunNasabah = objAkunNasabah;
     }
 
+    public AkunNasabah getObjAkunNasabah() {
+        return objAkunNasabah;
+    }
+
     public String formatUang(int value) {
         return moneyFormat.format(value);
     }
