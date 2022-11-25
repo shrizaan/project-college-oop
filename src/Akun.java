@@ -1,4 +1,4 @@
-public class Akun {
+public class Akun implements ValidasiNomorRekening, ValidasiPin {
     private String username;
 
     private String nomorRekening;
@@ -8,6 +8,13 @@ public class Akun {
         setNomorRekening(nomorRekening);
         setUsername(username);
         setPin(pin);
+    }
+
+    public boolean validasiNomorRekening(String nomorRekening) {
+        if (nomorRekening.equals(getNomorRekening()))
+            return true;
+        else
+            return false;
     }
 
     public boolean validasiPin(String pin) {
