@@ -5,33 +5,31 @@ public class GantiPIN extends Transaksi {
     private String pinBaru;
     private String konfirmasiPinBaru;
 
-    public GantiPIN(String nomorRekening, DatabaseAkun databaseAkun, String PIN) {
-        super(nomorRekening, databaseAkun);
-        this.pinLama = PIN;
+    public GantiPIN(AkunNasabah objekAkunNasabah) {
+        super(objekAkunNasabah);
     }
 
-    public void execute() {
-        AkunNasabah akunNasabah = getDatabaseAkun().getAkun(getNomorRekening());
+    public void prosesTransaksi() {
         System.out.println("Masukkan PIN lama: ");
         Scanner input = new Scanner(System.in);
         pinLama = input.nextLine();
 
-        if (pinLama.equals(akunNasabah.getPin())) {
-            System.out.println("Masukkan PIN baru: ");
-            pinBaru = input.nextLine();
-            System.out.println("Konfirmasi PIN baru: ");
-            konfirmasiPinBaru = input.nextLine();
-
-            if (pinBaru.equals(konfirmasiPinBaru)) {
-                akunNasabah.setPin(pinBaru);
-                System.out.println("PIN berhasil diganti");
-            } else {
-                System.out.println("PIN baru tidak sama");
+        if (pinLama.equals(getObjAkunNasabah().getPin())) {
+            while (true) {
+                System.out.println("Masukkan PIN baru: ");
+                pinBaru = input.nextLine();
+                System.out.println("Konfirmasi PIN baru: ");
+                konfirmasiPinBaru = input.nextLine();
+                if (pinBaru.equals(konfirmasiPinBaru)) {
+                    getObjAkunNasabah().setPin(pinBaru);
+                    System.out.println("PIN berhasil diganti");
+                    break;
+                } else {
+                    System.out.println("PIN baru tidak sama");
+                }
             }
-
         } else {
             System.out.println("PIN lama salah");
         }
-        akunNasabah.setPin(pinBaru);
     }
 }
