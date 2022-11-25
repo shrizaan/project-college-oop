@@ -1,8 +1,8 @@
 public class AkunAdmin extends Akun {
     private boolean isAdmin;
 
-    public AkunAdmin(String Username, String pin, boolean isAdmin) {
-        super( Username,  pin);
+    public AkunAdmin(String username, String nomorRekening, String pin, boolean isAdmin) {
+        super( username, nomorRekening,  pin);
         this.isAdmin = isAdmin;
     }
 
