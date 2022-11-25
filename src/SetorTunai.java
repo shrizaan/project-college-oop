@@ -19,8 +19,7 @@ public class SetorTunai extends Transaksi{
         return jumlahSetoran;
     }
 
-    @Override
-    public void execute() {
+    public void prosesTransaksi() {
         Scanner input = new Scanner(System.in);
         System.out.println("Pilih jenis setoran");
         System.out.println("1. Setor ke rekening sendiri");

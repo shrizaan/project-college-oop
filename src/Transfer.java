@@ -28,7 +28,7 @@ public class Transfer extends Transaksi {
     }
 
     @Override
-    public void execute() {
+    public void prosesTransaksi() {
         AkunNasabah userAccount = getDatabaseAkun().getAkun(getNomorRekening());
         AkunNasabah tujuanAccount = getDatabaseAkun().getAkun(getNomorRekeningTujuan());
 

@@ -58,27 +58,27 @@ public class ATM extends DatabaseAkun implements  LanjutLagi, Keluar {
             switch (transaksi) {
                 case "1":
                     CekSaldo objCekSaldo = new CekSaldo(nomorRekening, new DatabaseAkun());
-                    objCekSaldo.execute();
+                    objCekSaldo.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
                 case "2":
                     TarikTunai objTarikTunai = new TarikTunai(nomorRekening, new DatabaseAkun());
-                    objTarikTunai.execute();
+                    objTarikTunai.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
                 case "3":
                     SetorTunai objSetorTunai = new SetorTunai(nomorRekening, new DatabaseAkun());
-                    objSetorTunai.execute();
+                    objSetorTunai.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
                 case "4":
                     Transfer objTransfer = new Transfer(nomorRekening, new DatabaseAkun());
-                    objTransfer.execute();
+                    objTransfer.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
                 case "5":
                     GantiPIN objGantiPIN = new GantiPIN(nomorRekening, new DatabaseAkun(), pin);
-                    objGantiPIN.execute();
+                    objGantiPIN.prosesTransaksi();
                     lanjut = lanjutLagi();
                     break;
                 case "6":

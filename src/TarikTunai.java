@@ -13,7 +13,7 @@ public class TarikTunai extends Transaksi {
     } // end method debit
 
     @Override
-    public void execute() {
+    public void prosesTransaksi() {
         Scanner input = new Scanner(System.in);
         AkunNasabah akunNasabah = getDatabaseAkun().getAkun(getNomorRekening());
 

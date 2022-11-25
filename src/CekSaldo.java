@@ -6,7 +6,7 @@ public class CekSaldo extends Transaksi {
     }
 
     @Override
-    public void execute() {
+    public void prosesTransaksi() {
         this.akunNasabah = getDatabaseAkun().getAkun(getNomorRekening());
         System.out.println("\nSaldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
     }
