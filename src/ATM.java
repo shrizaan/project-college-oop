@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ATM extends DatabaseAkun implements  LanjutLagi, Keluar {
     private boolean lanjutLagi;
 
-    private Akun objAkun;
+    private AkunNasabah objekAkunNasabah;
 
     public static void login() {
         Scanner scan = new Scanner(System.in);
