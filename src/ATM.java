@@ -18,23 +18,25 @@ public class ATM extends DatabaseAkun {
                 menuPilihan(objekAkunNasabah);
                 break;
             } else {
-                System.out.println("Nomor Rekening atau PIN tidak ada di database!");
+                System.out.println("\nNomor Rekening atau PIN tidak ada di database!\n");
             }
         }
     }
 
     public void menuPilihan(AkunNasabah objekAkunNasabah) {
         Scanner scan = new Scanner(System.in);
-        boolean lanjut = true;
+        System.out.println("\n|====================================|");
+        System.out.println("  Nama         : " + objekAkunNasabah.getUsername());
+        System.out.println("  No. Rekening : " + objekAkunNasabah.getNomorRekening());
+        System.out.println("|====================================|");
 
         while (true) {
-            System.out.println("===================================");
-            System.out.println("1. Cek Saldo");
-            System.out.println("2. Tarik Tunai");
-            System.out.println("3. Setor Tunai");
-            System.out.println("4. Transfer");
-            System.out.println("5. Ganti PIN");
-            System.out.println("6. Keluar");
+            System.out.println("\t1. Cek Saldo");
+            System.out.println("\t2. Tarik Tunai");
+            System.out.println("\t3. Setor Tunai");
+            System.out.println("\t4. Transfer");
+            System.out.println("\t5. Ganti PIN");
+            System.out.println("\t6. Keluar");
             System.out.print("Pilih transaksi yang ingin dilakukan: ");
             String transaksi = scan.next();
 
@@ -42,30 +44,30 @@ public class ATM extends DatabaseAkun {
                 case "1":
                     CekSaldo objCekSaldo = new CekSaldo(objekAkunNasabah);
                     objCekSaldo.prosesTransaksi();
-                    lanjut = lanjutLagi();
+                    lanjutLagi();
                     break;
                 case "2":
                     TarikTunai objTarikTunai = new TarikTunai(objekAkunNasabah);
                     objTarikTunai.prosesTransaksi();
-                    lanjut = lanjutLagi();
+                    lanjutLagi();
                     break;
                 case "3":
                     SetorTunai objSetorTunai = new SetorTunai(objekAkunNasabah);
                     objSetorTunai.prosesTransaksi();
-                    lanjut = lanjutLagi();
+                    lanjutLagi();
                     break;
                 case "4":
                     Transfer objTransfer = new Transfer(objekAkunNasabah);
                     objTransfer.prosesTransaksi();
-                    lanjut = lanjutLagi();
+                    lanjutLagi();
                     break;
                 case "5":
                     GantiPIN objGantiPIN = new GantiPIN(objekAkunNasabah);
                     objGantiPIN.prosesTransaksi();
-                    lanjut = lanjutLagi();
+                    lanjutLagi();
                     break;
                 case "6":
-                    System.out.println("\nTerima kasih telah menggunakan ATM Bank WGO\n");
+                    System.out.println("\nTerima kasih telah menggunakan ATM Bank WKG\n");
                     break;
                 default:
                     System.out.println("Pilihan tidak valid!");
@@ -74,18 +76,18 @@ public class ATM extends DatabaseAkun {
     }
 
 
-    public boolean lanjutLagi() {
+    public void lanjutLagi() {
         while (true) {
-            System.out.println("\nApakah anda ingin melakukan transaksi lainnya? (y/n)");
+            System.out.print("\nApakah anda ingin melakukan transaksi lainnya (y/n)?: ");
             Scanner scan = new Scanner(System.in);
-            String pilihan = scan.next();
+            String pilihan = scan.next().toLowerCase();
 
             switch (pilihan) {
                 case "y":
-                    return true;
+                    menuPilihan(objekAkunNasabah);
                 case "n":
+                    System.out.println("\nTerima kasih telah menggunakan ATM Bank WKG\n");
                     System.exit(0);
-                    return false;
                 default:
                     System.out.println("\nPilihan tidak valid!");
             }

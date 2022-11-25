@@ -10,13 +10,11 @@ public class TarikTunai extends Transaksi {
     public void prosesTransaksi() {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("\n========================");
-        System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
-
         while(true) {
+            System.out.println("\nSaldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
             System.out.print("Masukkan jumlah penarikan: ");
             jumlahPenarikan = input.nextInt();
-            System.out.println("Konfirmasi jumlah penarikan: ");
+            System.out.print("Konfirmasi jumlah penarikan: ");
             konfirmasiJumlahPenarikan = input.nextInt();
 
             if (jumlahPenarikan == konfirmasiJumlahPenarikan) {
@@ -32,11 +30,12 @@ public class TarikTunai extends Transaksi {
                         break;
                     }
                 } else {
-                    System.out.println("Jumlah penarikan minimal Rp100.000");
+                    System.out.println("\nJumlah penarikan minimal Rp100.000");
                 }
                 break;
             } else {
-                System.out.println("Jumlah penarikan tidak sama");
+                System.out.println("\nJumlah penarikan tidak sama");
+                break;
             }
         }
     }
