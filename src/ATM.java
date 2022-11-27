@@ -18,6 +18,7 @@ public class ATM extends DatabaseAkun {
                 break;
             } else if (objekAkun != null && objekAkun instanceof AkunAdmin) {
                 menuPilihanAdmin((AkunAdmin) objekAkun);
+                break;
             }
             else {
                 System.out.println("\nNomor Rekening atau PIN tidak ada di database!\n");
@@ -79,9 +80,9 @@ public class ATM extends DatabaseAkun {
     }
 
     public void menuPilihanAdmin(AkunAdmin objekAkunAdmin) {
-        System.out.println("|====================================|");
-        System.out.println("|~~Selamat Datang di Tampilan Admin~~|");
         System.out.println("\n|====================================|");
+        System.out.println("|~~Selamat Datang di Tampilan Admin~~|");
+        System.out.println("|====================================|");
         System.out.println("  Nama         : " + objekAkunAdmin.getUsername());
         System.out.println("  No. Rekening : " + objekAkunAdmin.getNomorRekening());
         System.out.println("|====================================|");
@@ -98,7 +99,6 @@ public class ATM extends DatabaseAkun {
                     menuPilihanNasabah((AkunNasabah) objekAkun);
                 case "n":
                     System.out.println("\nTerima kasih telah menggunakan ATM Bank WKG\n");
-                    System.exit(0);
                 default:
                     System.out.println("\nPilihan tidak valid!");
             }
