@@ -6,7 +6,7 @@ public class ATM extends DatabaseAkun {
     public void login() {
         Scanner input = new Scanner(System.in);
         while (true) {
-            System.out.print("Masukkan nomor kartu: ");
+            System.out.print("Masukkan nomor rekening: ");
             String nomorRekening = input.next();
             System.out.print("Masukkkan nomor pin: ");
             String pin = input.next();
