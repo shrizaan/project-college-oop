@@ -20,8 +20,8 @@ public class Transfer extends Transaksi {
             System.out.print("Konfirmasi jumlah transfer: ");
             konfirmasiJumlahTransfer = input.nextInt();
 
-            if (jumlahTransfer >= 100000) {
-                if (jumlahTransfer == konfirmasiJumlahTransfer) {
+            if (jumlahTransfer == konfirmasiJumlahTransfer) {
+                if (jumlahTransfer >= 100000) {
                     if (jumlahTransfer > getObjAkunNasabah().getSaldo()) {
                         System.out.println("\nMaaf, saldo anda tidak mencukupi");
                         break;
@@ -34,10 +34,10 @@ public class Transfer extends Transaksi {
                         break;
                     }
                 } else {
-                    System.out.println("\nJumlah transfer tidak sama");
+                    System.out.println("\nJumlah transfer minimal Rp100.000");
                 }
             } else {
-                System.out.println("\nJumlah transfer minimal Rp100.000");
+                System.out.println("\nJumlah transfer tidak sama");
             }
         }
     }
