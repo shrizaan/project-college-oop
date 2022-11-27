@@ -8,10 +8,17 @@ public class TarikTunai extends Transaksi {
     }
 
     public void prosesTransaksi() {
+        AkunNasabah akunNasabah = getObjAkunNasabah();
         Scanner input = new Scanner(System.in);
 
+//        if (akunNasabah == getObjAkunNasabah()) {
+//            System.out.println("objek nya sama :D");
+//        } else {
+//            System.out.println("objek nya berbeda :(");
+//        }
+
         while(true) {
-            System.out.println("\nSaldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
+            System.out.println("\nSaldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
             System.out.print("Masukkan jumlah penarikan: ");
             jumlahPenarikan = input.nextInt();
             System.out.print("Konfirmasi jumlah penarikan: ");
@@ -19,14 +26,14 @@ public class TarikTunai extends Transaksi {
 
             if (jumlahPenarikan == konfirmasiJumlahPenarikan) {
                 if (jumlahPenarikan >= 100_000){
-                    if (jumlahPenarikan > getObjAkunNasabah().getSaldo()) {
+                    if (jumlahPenarikan > akunNasabah.getSaldo()) {
                         System.out.println("\nMaaf, saldo anda tidak mencukupi");
                         break;
                     } else {
-                        getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() - jumlahPenarikan);
+                        akunNasabah.setSaldo(akunNasabah.getSaldo() - jumlahPenarikan);
                         System.out.println("\nPenarikan berhasil");
                         System.out.println("Jumlah penarikan: " + formatUang(jumlahPenarikan));
-                        System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
+                        System.out.println("Saldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
                         break;
                     }
                 } else {

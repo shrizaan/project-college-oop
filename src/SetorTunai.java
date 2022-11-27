@@ -9,9 +9,11 @@ public class SetorTunai extends Transaksi {
     }
 
     public void prosesTransaksi() {
+        AkunNasabah akunNasabah = getObjAkunNasabah();
         Scanner input = new Scanner(System.in);
+
         while (true) {
-            System.out.println("\nSaldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
+            System.out.println("\nSaldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
             System.out.print("\nMasukkan jumlah setoran: ");
             jumlahSetoran = input.nextInt();
             System.out.print("Konfirmasi jumlah setoran: ");
@@ -19,10 +21,10 @@ public class SetorTunai extends Transaksi {
 
             if (jumlahSetoran == konfirmasiJumlahSetoran) {
                 if (jumlahSetoran >= 100000) {
-                    getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() + jumlahSetoran);
+                    akunNasabah.setSaldo(akunNasabah.getSaldo() + jumlahSetoran);
                     System.out.println("Setoran berhasil");
                     System.out.println("Jumlah setoran: " + formatUang(jumlahSetoran));
-                    System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
+                    System.out.println("Saldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
                     break;
                 } else {
                     System.out.println("\nJumlah setoran minimal Rp100.000");

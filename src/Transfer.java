@@ -10,7 +10,9 @@ public class Transfer extends Transaksi {
     }
 
     public void prosesTransaksi() {
+        AkunNasabah akunNasabah = getObjAkunNasabah();
         Scanner input = new Scanner(System.in);
+
         System.out.print("\nMasukkan nomor rekening tujuan: ");
         nomorRekeningTujuan = input.nextLine();
 
@@ -22,15 +24,15 @@ public class Transfer extends Transaksi {
 
             if (jumlahTransfer == konfirmasiJumlahTransfer) {
                 if (jumlahTransfer >= 100000) {
-                    if (jumlahTransfer > getObjAkunNasabah().getSaldo()) {
+                    if (jumlahTransfer > akunNasabah.getSaldo()) {
                         System.out.println("\nMaaf, saldo anda tidak mencukupi");
                         break;
                     } else {
-                        getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() - jumlahTransfer);
+                        akunNasabah.setSaldo(akunNasabah.getSaldo() - jumlahTransfer);
                         System.out.println("\nTransfer berhasil");
                         System.out.println("Nomor Rekening Tujuan: " + nomorRekeningTujuan);
                         System.out.println("Jumlah transfer: " + formatUang(jumlahTransfer));
-                        System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
+                        System.out.println("Saldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
                         break;
                     }
                 } else {

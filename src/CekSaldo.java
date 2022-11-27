@@ -13,7 +13,9 @@ public class CekSaldo extends Transaksi {
     }
 
     public void prosesTransaksi() {
-        setSaldoObjekNasabah(getObjAkunNasabah().getSaldo());
+        AkunNasabah akunNasabah = getObjAkunNasabah();
+
+        setSaldoObjekNasabah(akunNasabah.getSaldo());
         System.out.println("\nSaldo anda saat ini adalah: " + formatUang(getSaldoObjekNasabah()));
     }
 }

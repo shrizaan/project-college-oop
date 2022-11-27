@@ -10,18 +10,20 @@ public class GantiPIN extends Transaksi {
     }
 
     public void prosesTransaksi() {
+        AkunNasabah akunNasabah = getObjAkunNasabah();
+
         System.out.print("\nMasukkan PIN lama: ");
         Scanner input = new Scanner(System.in);
         pinLama = input.nextLine();
 
-        if (pinLama.equals(getObjAkunNasabah().getPin())) {
+        if (pinLama.equals(akunNasabah.getPin())) {
             while (true) {
                 System.out.print("Masukkan PIN baru: ");
                 pinBaru = input.nextLine();
                 System.out.print("Konfirmasi PIN baru: ");
                 konfirmasiPinBaru = input.nextLine();
                 if (pinBaru.equals(konfirmasiPinBaru)) {
-                    getObjAkunNasabah().setPin(pinBaru);
+                    akunNasabah.setPin(pinBaru);
                     System.out.println("\nPIN berhasil diganti");
                     break;
                 } else {
