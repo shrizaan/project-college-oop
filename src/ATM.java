@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ATM extends DatabaseAkun {
+public class ATM  {
     private  Akun objekAkun;
 
     public void login() {
