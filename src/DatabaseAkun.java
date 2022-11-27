@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 
 public class DatabaseAkun {
-    //    alasan kami menggunakan tipe data arraylist karena tipe data arraylist lebih mudah untuk di manipulasi seperti menambahkan data tanpa perlu mengkhawatirkan ukuran array nya.
-//    selain itu alasan kami tidak menjadi kannya sebagai attribute karena karena kami ingin variabel ini tidak dapat diakses oleh class lain.
-    private static ArrayList<Akun> databaseAkun = new ArrayList<>(); // array of Accounts
+    // alasan kami menggunakan tipe data arraylist karena tipe data arraylist lebih mudah untuk
+    // di manipulasi seperti menambahkan data tanpa perlu mengkhawatirkan ukuran array nya.
+    // selain itu alasan kami tidak menjadi kannya sebagai attribute
+    // karena kami ingin variabel ini tidak dapat diakses oleh class lain.
+    private ArrayList<Akun> databaseAkun = new ArrayList<>(); // array bertipe Akun
 
     public DatabaseAkun() {
         //membuat akun nasabah dan admin
