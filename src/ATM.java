@@ -13,6 +13,7 @@ public class ATM  {
 
             DatabaseAkun databaseAkun = new DatabaseAkun();
             objekAkun = databaseAkun.getAkun(nomorRekening, pin);
+
             if (objekAkun != null && objekAkun instanceof AkunNasabah) {
                 menuPilihanNasabah((AkunNasabah) objekAkun);
                 break;
