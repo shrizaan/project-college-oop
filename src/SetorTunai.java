@@ -16,20 +16,20 @@ public class SetorTunai extends Transaksi {
             jumlahSetoran = input.nextInt();
             System.out.print("Konfirmasi jumlah setoran: ");
             konfirmasiJumlahSetoran = input.nextInt();
-            if (jumlahSetoran >= 100000) {
-                if (jumlahSetoran == konfirmasiJumlahSetoran) {
+
+            if (jumlahSetoran == konfirmasiJumlahSetoran) {
+                if (jumlahSetoran >= 100000) {
                     getObjAkunNasabah().setSaldo(getObjAkunNasabah().getSaldo() + jumlahSetoran);
                     System.out.println("Setoran berhasil");
                     System.out.println("Jumlah setoran: " + formatUang(jumlahSetoran));
                     System.out.println("Saldo anda saat ini adalah: " + formatUang(getObjAkunNasabah().getSaldo()));
                     break;
                 } else {
-                    System.out.println("\nJumlah setoran tidak sama");
+                    System.out.println("\nJumlah setoran minimal Rp100.000");
                 }
             } else {
-                System.out.println("\nJumlah setoran minimal Rp100.000");
+                System.out.println("\nJumlah setoran tidak sama");
             }
-
         }
     }
 }
