@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ATM extends DatabaseAkun {
-    private  AkunNasabah objekAkunNasabah;
+    private  Akun objekAkun;
 
     public void login() {
         Scanner input = new Scanner(System.in);
@@ -12,17 +12,20 @@ public class ATM extends DatabaseAkun {
             String pin = input.next();
 
             DatabaseAkun databaseAkun = new DatabaseAkun();
-            objekAkunNasabah = databaseAkun.getAkun(nomorRekening, pin);
-            if (objekAkunNasabah != null) {
-                menuPilihan(objekAkunNasabah);
+            objekAkun = databaseAkun.getAkun(nomorRekening, pin);
+            if (objekAkun != null && objekAkun instanceof AkunNasabah) {
+                menuPilihanNasabah((AkunNasabah) objekAkun);
                 break;
-            } else {
+            } else if (objekAkun != null && objekAkun instanceof AkunAdmin) {
+                menuPilihanAdmin((AkunAdmin) objekAkun);
+            }
+            else {
                 System.out.println("\nNomor Rekening atau PIN tidak ada di database!\n");
             }
         }
     }
 
-    public void menuPilihan(AkunNasabah objekAkunNasabah) {
+    public void menuPilihanNasabah(AkunNasabah objekAkunNasabah) {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
@@ -75,6 +78,14 @@ public class ATM extends DatabaseAkun {
         }
     }
 
+    public void menuPilihanAdmin(AkunAdmin objekAkunAdmin) {
+        System.out.println("|====================================|");
+        System.out.println("|~~Selamat Datang di Tampilan Admin~~|");
+        System.out.println("\n|====================================|");
+        System.out.println("  Nama         : " + objekAkunAdmin.getUsername());
+        System.out.println("  No. Rekening : " + objekAkunAdmin.getNomorRekening());
+        System.out.println("|====================================|");
+    }
 
     public void lanjutLagi() {
         while (true) {
@@ -84,7 +95,7 @@ public class ATM extends DatabaseAkun {
 
             switch (pilihan) {
                 case "y":
-                    menuPilihan(objekAkunNasabah);
+                    menuPilihanNasabah((AkunNasabah) objekAkun);
                 case "n":
                     System.out.println("\nTerima kasih telah menggunakan ATM Bank WKG\n");
                     System.exit(0);
