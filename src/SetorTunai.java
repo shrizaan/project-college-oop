@@ -14,7 +14,7 @@ public class SetorTunai extends Transaksi {
 
         while (true) {
             System.out.println("\nSaldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
-            System.out.print("\nMasukkan jumlah setoran: ");
+            System.out.print("Masukkan jumlah setoran: ");
             jumlahSetoran = input.nextInt();
             System.out.print("Konfirmasi jumlah setoran: ");
             konfirmasiJumlahSetoran = input.nextInt();

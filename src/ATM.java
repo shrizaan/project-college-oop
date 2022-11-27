@@ -75,7 +75,7 @@ public class ATM  {
                     System.out.println("\nTerima kasih telah menggunakan ATM Bank WKG\n");
                     System.exit(0);
                 default:
-                    System.out.println("\nPilihan tidak valid!\n");
+                    System.out.println("\nPilihan tidak valid!");
             }
         }
     }

@@ -36,10 +36,10 @@ public class Transfer extends Transaksi {
                         break;
                     }
                 } else {
-                    System.out.println("\nJumlah transfer minimal Rp100.000");
+                    System.out.println("\nJumlah transfer minimal Rp100.000\n");
                 }
             } else {
-                System.out.println("\nJumlah transfer tidak sama");
+                System.out.println("\nJumlah transfer tidak sama\n");
             }
         }
     }
