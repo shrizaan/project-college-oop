@@ -11,14 +11,7 @@ public class Akun implements ValidasiNomorRekening, ValidasiPin {
     }
 
     public boolean validasiNomorRekening(String nomorRekening) {
-        if (nomorRekening.equals(getNomorRekening()))
-            return true;
-        else
-            return false;
-    }
-
-    public boolean validasiPin(String pin) {
-        if (pin.equals(getPin())) {
+        if (nomorRekening.equals(this.nomorRekening)) {
             return true;
         }
         else {
@@ -26,8 +19,16 @@ public class Akun implements ValidasiNomorRekening, ValidasiPin {
         }
     }
 
-    public String getNomorRekening()
-    {
+    public boolean validasiPin(String pin) {
+        if (pin.equals(this.pin)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public String getNomorRekening() {
         return nomorRekening;
     }
 

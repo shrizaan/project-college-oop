@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ATM  {
-    private  Akun objekAkun;
+    private Akun objekAkun;
 
     public void login() {
         Scanner input = new Scanner(System.in);

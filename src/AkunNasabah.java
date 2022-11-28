@@ -10,7 +10,6 @@ public class AkunNasabah extends Akun
         setSaldo(saldo);
     }
 
-
     public int getSaldo() {
         return saldo;
     }

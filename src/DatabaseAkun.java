@@ -5,10 +5,12 @@ public class DatabaseAkun {
     // di manipulasi seperti menambahkan data tanpa perlu mengkhawatirkan ukuran array nya.
     // selain itu alasan kami tidak menjadi kannya sebagai attribute
     // karena kami ingin variabel ini tidak dapat diakses oleh class lain.
+//    alasan array bertipe Akun suapaya dapat menyimpan object yang dibuat dari class AkunNasabah dan juga class AkunAdmin
     private ArrayList<Akun> databaseAkun = new ArrayList<>(); // array bertipe Akun
 
     public DatabaseAkun() {
         // membuat akun nasabah dan admin
+
         Akun AkunNasabah1 = new AkunNasabah("Shahrizan", "12345", "11111", 10_000_000);
         Akun AkunNasabah2 = new AkunNasabah("Alif Putra Cira", "98765", "22222", 20_000_000);
         Akun AkunNasabah3 = new AkunNasabah("Raffi Firdaus", "19234", "33333", 30_000_000);
@@ -24,7 +26,7 @@ public class DatabaseAkun {
     }
 
     public Akun getAkun(String nomorRekening, String pin) {
-        // melakukan perulangan for each yang mana setiap data pada attribute databaseAkun
+        // melakukan perulangan for each yang mana setiap nilai pada array databaseAkun
         // akan dimasukkan ke variabel akun bertipe Akun
         // dan akan melakukan perulangan dari indeks 0 sampai paling akhir
         for (Akun akun : databaseAkun) {

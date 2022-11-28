@@ -24,15 +24,16 @@ public class Transfer extends Transaksi {
 
             if (jumlahTransfer == konfirmasiJumlahTransfer) {
                 if (jumlahTransfer >= 100000) {
-                    if (jumlahTransfer > akunNasabah.getSaldo()) {
-                        System.out.println("\nMaaf, saldo anda tidak mencukupi");
-                        break;
-                    } else {
+                    if (jumlahTransfer < akunNasabah.getSaldo()) {
                         akunNasabah.setSaldo(akunNasabah.getSaldo() - jumlahTransfer);
+
                         System.out.println("\nTransfer berhasil");
                         System.out.println("Nomor Rekening Tujuan: " + nomorRekeningTujuan);
                         System.out.println("Jumlah transfer: " + formatUang(jumlahTransfer));
                         System.out.println("Saldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
+                        break;
+                    } else {
+                        System.out.println("\nMaaf, saldo anda tidak mencukupi");
                         break;
                     }
                 } else {

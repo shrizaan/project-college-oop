@@ -9,15 +9,12 @@ public class TarikTunai extends Transaksi {
 
     public void prosesTransaksi() {
         AkunNasabah akunNasabah = getObjAkunNasabah();
+//        object input guna nya untuk melakuan fungsi input
         Scanner input = new Scanner(System.in);
 
-//        if (akunNasabah == getObjAkunNasabah()) {
-//            System.out.println("objek nya sama :D");
-//        } else {
-//            System.out.println("objek nya berbeda :(");
-//        }
 
         while(true) {
+
             System.out.println("\nSaldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
             System.out.print("Masukkan jumlah penarikan: ");
             jumlahPenarikan = input.nextInt();
@@ -25,7 +22,7 @@ public class TarikTunai extends Transaksi {
             konfirmasiJumlahPenarikan = input.nextInt();
 
             if (jumlahPenarikan == konfirmasiJumlahPenarikan) {
-                if (jumlahPenarikan >= 100_000){
+                if (jumlahPenarikan >= 100000){
                     if (jumlahPenarikan > akunNasabah.getSaldo()) {
                         System.out.println("\nMaaf, saldo anda tidak mencukupi");
                         break;
@@ -42,6 +39,7 @@ public class TarikTunai extends Transaksi {
             } else {
                 System.out.println("\nJumlah penarikan tidak sama");
             }
+
         }
     }
 }
