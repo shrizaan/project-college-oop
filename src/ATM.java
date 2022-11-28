@@ -15,10 +15,10 @@ public class ATM  {
             objekAkun = databaseAkun.getAkun(nomorRekening, pin);
 
             if (objekAkun != null && objekAkun instanceof AkunNasabah) {
-                menuPilihanNasabah((AkunNasabah) objekAkun);
+                menuPilihan((AkunNasabah) objekAkun);
                 break;
             } else if (objekAkun != null && objekAkun instanceof AkunAdmin) {
-                menuPilihanAdmin((AkunAdmin) objekAkun);
+                menuPilihan((AkunAdmin) objekAkun);
                 break;
             }
             else {
@@ -27,7 +27,7 @@ public class ATM  {
         }
     }
 
-    public void menuPilihanNasabah(AkunNasabah objekAkunNasabah) {
+    public void menuPilihan(AkunNasabah objekAkunNasabah) {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
@@ -80,7 +80,7 @@ public class ATM  {
         }
     }
 
-    public void menuPilihanAdmin(AkunAdmin objekAkunAdmin) {
+    public void menuPilihan(AkunAdmin objekAkunAdmin) {
         System.out.println("\n|====================================|");
         System.out.println("|~~Selamat Datang di Tampilan Admin~~|");
         System.out.println("|====================================|");
@@ -97,9 +97,10 @@ public class ATM  {
 
             switch (pilihan) {
                 case "y":
-                    menuPilihanNasabah((AkunNasabah) objekAkun);
+                    menuPilihan((AkunNasabah) objekAkun);
                 case "n":
                     System.out.println("\nTerima kasih telah menggunakan ATM Bank WKG\n");
+                    System.exit(0);
                 default:
                     System.out.println("\nPilihan tidak valid!");
             }
