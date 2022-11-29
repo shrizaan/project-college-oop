@@ -37,24 +37,29 @@ public class TarikTunai extends Transaksi {
      *
      * Method ini akan meminta user untuk memasukkan jumlah penarikan dan konfirmasi jumlah penarikan.
      * Jika jumlah penarikan dan konfirmasi jumlah penarikan sama, maka akan dilakukan penarikan tunai.
-     * Jika jumlah penarikan dan konfirmasi jumlah penarikan tidak sama, maka akan ditampilkan pesan penarikan tidak sama.
-     * Jika jumlah penarikan lebih besar dari saldo, maka akan ditampilkan pesan penarikan lebih besar dari saldo.
+     *
+     * Jika jumlah penarikan dan konfirmasi jumlah penarikan tidak sama,
+     * maka akan ditampilkan pesan penarikan tidak sama.
+     *
+     * Jika jumlah penarikan lebih besar dari saldo,
+     * maka akan ditampilkan pesan penarikan lebih besar dari saldo.
+     *
      * Jika jumlah penarikan kurang dari 10000, maka akan ditampilkan pesan penarikan minimal 10000.
      */
     public void prosesTransaksi() {
-        // membuat variabel akunNasabah bertipe AkunNasabah dari method getObjAkunNasabah
-        AkunNasabah akunNasabah = getObjAkunNasabah();
         Scanner input = new Scanner(System.in); // membuat object scanner
 
         /**
          * Perulangan while dengan kondisi boolean true dibuat supaya perulangan dilakukan terus menerus.
-         * Alasan dibuat terus menerurs karena ketika suatu user melakukan input yang salah atau tidak cocok dengan kondisi
-         * maka perulangan nya akan diulangi lagi sampai user input yang benar atau cocok dengan kondisi
+         * Alasan dibuat terus menerurs karena ketika suatu user
+         * melakukan input yang salah atau tidak cocok dengan kondisi.
+         * maka perulangan nya akan diulangi lagi sampai
+         * user input yang benar atau cocok dengan kondisi
          * perulangan baru berhenti karena terdapat keyword BREAK.
          */
         while(true)  {
             // menampilkan pesan jumlah saldo nasabah saat ini dalam format rupiah
-            System.out.println("\nSaldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
+            System.out.println("\nSaldo anda saat ini adalah: " + formatUang(objekAkunNasabah.getSaldo()));
             // menampilkan pesan untuk memasukkan jumlah penarikan
             System.out.print("Masukkan jumlah penarikan: ");
             jumlahPenarikan = input.nextInt(); // input jumlah penarikan
@@ -67,18 +72,19 @@ public class TarikTunai extends Transaksi {
                 // jika jumlah penarikan lebih besar dari 100 ribu
                 if (jumlahPenarikan >= 100000){
                     // jika jumlah penarikan lebih besar dari saldo
-                    if (jumlahPenarikan > akunNasabah.getSaldo()) {
+                    if (jumlahPenarikan > objekAkunNasabah.getSaldo()) {
                         // menampilkan pesan penarikan lebih besar dari saldo
                         System.out.println("\nMaaf, saldo anda tidak mencukupi");
                         break; // menhentikan perulangan dengan keyword break dan kembali ke menu utama
                     } else {
                         // mengurangi saldo dengan jumlah penarikan dengan method setSaldo
-                        akunNasabah.setSaldo(akunNasabah.getSaldo() - jumlahPenarikan);
-                        System.out.println("\nPenarikan berhasil"); // menampilkan pesan penarikan berhasil
+                        objekAkunNasabah.setSaldo(objekAkunNasabah.getSaldo() - jumlahPenarikan);
+                        // menampilkan pesan penarikan berhasil
+                        System.out.println("\nPenarikan berhasil");
                         // menampilkan pesan jumlah penarikan yang telah dilakukan dalam format rupiah
                         System.out.println("Jumlah penarikan: " + formatUang(jumlahPenarikan));
                         // menampilkan pesan jumlah saldo nasabah saat ini dalam format rupiah
-                        System.out.println("Saldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
+                        System.out.println("Saldo anda saat ini adalah: " + formatUang(objekAkunNasabah.getSaldo()));
                         break; // menghentikan perulangan dengan keyword break dan kembali ke menu utama
                     }
                 } else {

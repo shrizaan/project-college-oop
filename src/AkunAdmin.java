@@ -7,7 +7,8 @@
  * bahwa object ini adalah object dari class AkunAdmin.
  */
 public class AkunAdmin extends Akun {
-    // attribute isAdmin digunakan untuk membuktikan bahwa suatu object yang dibuat dari class AkunAdmin adalah benar admin
+    // attribute isAdmin digunakan untuk membuktikan bahwa suatu object
+    // yang dibuat dari class AkunAdmin adalah benar admin
     private boolean isAdmin;
 
     /**
@@ -24,17 +25,17 @@ public class AkunAdmin extends Akun {
         // melakukan pengecekan apakah parameter isAdmin adalah true atau false
         if (isAdmin == true) {
             // jika parameter isAdmin adalah true, maka attribute isAdmin akan diisi dengan true
-            setIsAdmin(isAdmin);
+            this.isAdmin = isAdmin;
         } else {
             // jika parameter isAdmin adalah false, maka attribute isAdmin akan diisi dengan false
             // dan akan menampilkan pesan error tidak bisa membuat akun admin
             System.out.println("Tidak bisa membuat akun admin");
         }
-
     }
 
     /**
-     * Fungsi dari method ini adalah untuk mengecek apakah object yang dibuat dari class AkunAdmin adalah admin atau bukan
+     * Fungsi dari method ini adalah untuk mengecek apakah object yang dibuat
+     * dari class AkunAdmin adalah admin atau bukan
      * mengembalikan nilai attribute admin
      */
     public boolean getIsAdmin() {

@@ -15,13 +15,16 @@
 import java.util.Scanner;
 
 public class ATM  {
+    //   attribute objekAkun bertipe Akun yang digunakan
+    //   untuk menyimpan object AkunNasabah atau AkunAdmin yang sedang login sekarang
     private Akun objekAkun;
 
     // Method login digunakan untuk melakukan login ke aplikasi atm
     public void login() {
         /**
          * Perulangan while dengan kondisi boolean true dibuat supaya perulangan dilakukan terus menerus.
-         * Alasan dibuat terus menerurs karena ketika suatu user melakukan input yang salah atau tidak cocok dengan kondisi
+         * Alasan dibuat terus menerurs karena ketika suatu user
+         * melakukan input yang salah atau tidak cocok dengan kondisi
          * maka perulangan nya akan diulangi lagi sampai user input yang benar atau cocok dengan kondisi
          * perulangan baru berhenti karena terdapat keyword BREAK.
          */
@@ -35,19 +38,24 @@ public class ATM  {
             /**
              * Membuat object DatabaseAkun yang fungsinya untuk membuat seluruh akunAdmin dan akunNasabah
              * pada constructor DatabaseAkun.
-             * Object databaseAkun memiliki variabel attribute arraylist yang digunakan untuk menyimpan seluruh data akun
+             * Object databaseAkun memiliki variabel attribute arraylist yang
+             * digunakan untuk menyimpan seluruh data akun
              */
             DatabaseAkun databaseAkun = new DatabaseAkun();
             /**
-             * Memanggil method getAkun dengan menggunakan object databaseAkun dengan argument nilai inputan user tadi
-             * yaitu nomorRekening dan pin
+             * Memanggil method getAkun dengan menggunakan object databaseAkun
+             * dengan argument nilai inputan user tadi yaitu nomorRekening dan pin
              */
             objekAkun = databaseAkun.getAkun(nomorRekening, pin);
 
             /**
-             * Melakukan pengecekan pada attribute objekAkun dengan menggunakan logika AND (&&) yang menggabungkan 2 kondisi.
+             * Melakukan pengecekan pada attribute objekAkun dengan
+             * menggunakan logika AND (&&) yang menggabungkan 2 kondisi.
+             *
              * Kondisi pertama mengecek apakah nilai objectAkun tidak sama dengan null / kosong / tidak ada nilai
-             * Kondisi kedua mengecek apakah nilai objectAkun dibuat menggunakan class AkunNasabah dengan operator instanceof
+             * Kondisi kedua mengecek apakah nilai objectAkun dibuat menggunakan
+             * class AkunNasabah dengan operator instanceof
+             *
              * Operator instanceof mengecek apakah suatu object benar benar dibuat dari suatu class
              * jika iya maka akan mengembalikan true
              * jika tidak maka akan mengembalikan false
@@ -58,8 +66,8 @@ public class ATM  {
                  *                              menjadi tipe yang ada didalam tanda kurung yaitu
                  *                              AkunNasabah
                  * Contoh lain:
-                 * (String) variabelAngka: artinya kode ini mengubah variabelAngka yang awalnya bertipe integer
-                 *                      menjadi bertipe string
+                 * (String) variabelAngka: artinya kode ini mengubah
+                 *              variabelAngka yang awalnya bertipe integer menjadi bertipe string
                  */
                 // memanggil method menuPilihan dengan argument objekAkun
                 // dan mengubah tipe datanya menjadi bertipe AkunNasabah
@@ -67,9 +75,11 @@ public class ATM  {
                 break; // break digunakan untuk menghentikan perulangan
 
                 // kode else if ini dibawah sama fungsinya dengan kondisi if diatas
-                // yang membedakannya adalah pada pengecekan apakah objekAkun dibuat menggunakan class AkunAdmin
+                // yang membedakannya adalah pada pengecekan apakah objekAkun
+                // dibuat menggunakan class AkunAdmin
             } else if (objekAkun != null && objekAkun instanceof AkunAdmin) {
-                // memanggil method menuPilihan dengan argument objekAkun dan mengubah tipe datanya menjadi bertipe AkunAdmin
+                // memanggil method menuPilihan dengan argument objekAkun
+                // dan mengubah tipe datanya menjadi bertipe AkunAdmin
                 menuPilihan((AkunAdmin) objekAkun);
                 break; // break digunakan untuk menghentikan perulangan
             }
@@ -92,8 +102,8 @@ public class ATM  {
         while (true) {
             // 4 baris dibawah ini digunakan untuk menampilkan informasi nama dan nomor rekening nasabah
             System.out.println("\n|====================================|");
-            System.out.println("  Nama         : " + objekAkunNasabah.getUsername());
-            System.out.println("  No. Rekening : " + objekAkunNasabah.getNomorRekening());
+            System.out.println("  Nama         : " + objekAkunNasabah.username);
+            System.out.println("  No. Rekening : " + objekAkunNasabah.nomorRekening);
             System.out.println("|====================================|");
 
             // menampilkan menu pilihan
@@ -109,7 +119,6 @@ public class ATM  {
 
             // melakukan pengecekan inputan user dengan menggunakan switch case
             switch (transaksi) {
-
                 case "1":
                     /**
                      * jika inputan user adalah 1 maka membuat object dari class CekSaldo dengan argument objekAkunNasabah
@@ -187,14 +196,18 @@ public class ATM  {
         }
     }
 
-    // Method menuPilihan pertama yang menerima objectAkunAdmin dan method ini dibuat khusus akunAdmin
-    // Method ini menampilkan pesan informasi tentang akun admin yaitu nama akun admin dan nomor rekening admin
+    /**
+     * Method menuPilihan pertama yang menerima objectAkunAdmin dan method ini dibuat khusus akunAdmin
+     * Method ini menampilkan pesan informasi tentang akun admin
+     * yaitu nama akun admin dan nomor rekening admin
+     * @param objekAkunAdmin
+     */
     public void menuPilihan(AkunAdmin objekAkunAdmin) {
         System.out.println("\n|====================================|");
         System.out.println("|~~Selamat Datang di Tampilan Admin~~|");
         System.out.println("|====================================|");
-        System.out.println("  Nama         : " + objekAkunAdmin.getUsername());
-        System.out.println("  No. Rekening : " + objekAkunAdmin.getNomorRekening());
+        System.out.println("  Nama         : " + objekAkunAdmin.username);
+        System.out.println("  No. Rekening : " + objekAkunAdmin.nomorRekening);
         System.out.println("|====================================|");
     }
 
@@ -202,8 +215,9 @@ public class ATM  {
     // ingin melanjutkan transaksi atau tidak
     public void lanjutLagi() {
         /**
-         * Perulangan while dengan kondisi boolean true dibuat supaya perulangan dilakukan terus menerus.
-         * Alasan dibuat terus menerurs karena ketika suatu user melakukan input yang salah atau tidak cocok dengan kondisi
+         * Perulangan while dengan kondisi boolean true dibuat supaya p
+         * erulangan dilakukan terus menerus. Alasan dibuat terus menerurs karena ketika suatu user
+         * melakukan input yang salah atau tidak cocok dengan kondisi
          * maka perulangan nya akan diulangi lagi sampai user input yang benar atau cocok dengan kondisi
          * perulangan baru berhenti karena terdapat keyword BREAK.
          */
@@ -230,7 +244,8 @@ public class ATM  {
                     System.out.println("\nTerima kasih telah menggunakan ATM Bank WKG\n");
                     System.exit(0); // kode ini digunakan untuk menghentikan program
                 default:
-                    // Jika inputan user tidak sesuai dengan kondisi maka akan menampilkan pesan "Pilihan tidak valid"
+                    // Jika inputan user tidak sesuai dengan kondisi
+                    // maka akan menampilkan pesan "Pilihan tidak valid"
                     System.out.println("\nPilihan tidak valid!");
             }
         }

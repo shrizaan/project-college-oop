@@ -38,8 +38,6 @@ public class SetorTunai extends Transaksi {
      * Jika jumlah setoran kurang dari 100 ribu, maka akan menampilkan pesan minimal 100 ribu
      */
     public void prosesTransaksi() {
-        // Mengambil object dari class AkunNasabah menggunakan method getObjAkunNasabah dan disimpan ke variable akunNasabah
-        AkunNasabah akunNasabah = getObjAkunNasabah();
         Scanner input = new Scanner(System.in); // Membuat object dari class Scanner
 
         /**
@@ -50,10 +48,13 @@ public class SetorTunai extends Transaksi {
          */
         while (true) {
             // Menampilkan pesan saldo saat ini
-            System.out.println("\nSaldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
-            System.out.print("Masukkan jumlah setoran: "); // Menampilkan pesan masukkan jumlah setoran
-            jumlahSetoran = input.nextInt(); // Mengambil input dari user dan disimpan ke variable jumlahSetoran
-            System.out.print("Konfirmasi jumlah setoran: "); // Menampilkan pesan konfirmasi jumlah setoran
+            System.out.println("\nSaldo anda saat ini adalah: " + formatUang(objekAkunNasabah.getSaldo()));
+            // Menampilkan pesan masukkan jumlah setoran
+            System.out.print("Masukkan jumlah setoran: ");
+            // Mengambil input dari user dan disimpan ke variable jumlahSetoran
+            jumlahSetoran = input.nextInt();
+            // Menampilkan pesan konfirmasi jumlah setoran
+            System.out.print("Konfirmasi jumlah setoran: ");
             // Mengambil input dari user dan disimpan ke variable konfirmasiJumlahSetoran
             konfirmasiJumlahSetoran = input.nextInt();
 
@@ -64,13 +65,13 @@ public class SetorTunai extends Transaksi {
                     // jika 2 statement if diatas terpenuhi maka akan menjalan kode dibawah ini
                     // Menambahkan jumlah setoran ke saldo akun nasabah yang sedang login sekarang
                     // dengan menggunakan method setSaldo
-                    akunNasabah.setSaldo(akunNasabah.getSaldo() + jumlahSetoran);
+                    objekAkunNasabah.setSaldo(objekAkunNasabah.getSaldo() + jumlahSetoran);
                     System.out.println("Setoran berhasil"); // Menampilkan pesan setoran berhasil
                     // Menampilkan jumlah setoran dengan memanggil method formatUang
                     // supaya formatnya menjadi rupiah
                     System.out.println("Jumlah setoran: " + formatUang(jumlahSetoran));
                     // Menampilkan saldo akun nasabah yang sedang login sekarang setelah melakukakan setor tunai
-                    System.out.println("Saldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
+                    System.out.println("Saldo anda saat ini adalah: " + formatUang(objekAkunNasabah.getSaldo()));
                     break; // Perulangan dihentikan
                 } else {
                     // Jika jumlah setoran kurang dari 100 ribu maka akan menjalankan kode dibawah ini
@@ -78,7 +79,8 @@ public class SetorTunai extends Transaksi {
                     System.out.println("\nJumlah setoran minimal Rp100.000");
                 }
             } else {
-                // Jika jumlah setoran dan konfirmasi jumlah setoran tidak sama maka akan menjalankan kode dibawah ini
+                // Jika jumlah setoran dan konfirmasi jumlah setoran tidak sama m
+                // aka akan menjalankan kode dibawah ini
                 // Perulangan dilanjutkan kembali sampai user memasukkan input yang benar
                 System.out.println("\nJumlah setoran tidak sama");
             }

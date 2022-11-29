@@ -1,7 +1,7 @@
-/*
-* Fungsi class ini adalah untuk menjalankan program simulasi ATM,
-* karena memiliki method main yang akan menjalan method login menggunakan object ATM
-* */
+/**
+ * Fungsi class ini adalah untuk menjalankan program simulasi ATM,
+ * karena memiliki method main yang akan menjalan method login menggunakan object ATM
+ */
 public class Application {
     public static void main(String[] args) {
         System.out.println("|====================================|");

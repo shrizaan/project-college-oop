@@ -38,7 +38,8 @@ public class Transfer extends Transaksi {
      * 2. Memasukkan jumlah transfer
      * 3. Melakukan konfirmasi jumlah transfer
      *
-     * Method ini Melakukan pengecekan apakah jumlah transfer yang dimasukkan sesuai dengan saldo yang ada.
+     * Method ini Melakukan pengecekan apakah jumlah transfer
+     * yang dimasukkan sesuai dengan saldo yang ada.
      * dengan menggunakan attribute jumlahTransfer dan konfirmasiJumlahTransfer
      *
      * Method ini  memiliki 2 proses yang terjadi ketika proses transfer berhasil yaitu:
@@ -46,24 +47,28 @@ public class Transfer extends Transaksi {
      * 2. Menambahkan saldo dari akun nasabah tujuan
      */
     public void prosesTransaksi() {
-        // Membuat variabel akunNasabah bertipe AkunNasabah untuk menyimpan object akun nasabah yang sedang login
-        AkunNasabah akunNasabah = getObjAkunNasabah();
-        Scanner input = new Scanner(System.in); // Membuat object input dari class Scanner untuk input dari user
+        // Membuat object input dari class Scanner untuk input dari user
+        Scanner input = new Scanner(System.in);
 
         // Menampilkan pesan untuk memasukkan nomor rekening tujuan
         System.out.print("\nMasukkan nomor rekening tujuan: ");
-        nomorRekeningTujuan = input.nextLine(); //  Memasukkan nomor rekening tujuan ke dalam attribute nomorRekeningTujuan
+        //  Memasukkan nomor rekening tujuan ke dalam attribute nomorRekeningTujuan
+        nomorRekeningTujuan = input.nextLine();
 
         /**
-         * Perulangan while dengan kondisi boolean true dibuat supaya perulangan dilakukan terus menerus.
-         * Alasan dibuat terus menerurs karena ketika suatu user melakukan input yang salah atau tidak cocok dengan kondisi
-         * maka perulangan nya akan diulangi lagi sampai user input yang benar atau cocok dengan kondisi
+         * Perulangan while dengan kondisi boolean true dibuat
+         * supaya perulangan dilakukan terus menerus.
+         * Alasan dibuat terus menerurs karena ketika suatu user.
+         * melakukan input yang salah atau tidak cocok dengan kondisi
+         * maka perulangan nya akan diulangi lagi sampai
+         * user input yang benar atau cocok dengan kondisi
          * perulangan baru berhenti karena terdapat keyword BREAK.
          */
         while (true) {
             // Menampilkan pesan untuk memasukkan jumlah transfer
             System.out.print("Masukkan jumlah transfer: ");
-            jumlahTransfer = input.nextInt(); // Memasukkan jumlah transfer ke dalam attribute jumlahTransfer
+            // Memasukkan jumlah transfer ke dalam attribute jumlahTransfer
+            jumlahTransfer = input.nextInt();
             // Menampilkan pesan untuk memasukkan konfirmasi jumlah transfer
             System.out.print("Konfirmasi jumlah transfer: ");
             // Memasukkan konfirmasi jumlah transfer ke dalam attribute konfirmasiJumlahTransfer
@@ -74,22 +79,22 @@ public class Transfer extends Transaksi {
                 // Pengecekan apakah jumlah transfer lebih kecil dari saldo yang ada
                 if (jumlahTransfer >= 100000) {
                     // Pengecekan apakah jumlah transfer lebih kecil dari saldo yang ada
-                    if (jumlahTransfer < akunNasabah.getSaldo()) {
+                    if (jumlahTransfer < objekAkunNasabah.getSaldo()) {
                         // Mengurangi saldo dari akun nasabah yang sedang login
-                        akunNasabah.setSaldo(akunNasabah.getSaldo() - jumlahTransfer);
-
-                        System.out.println("\nTransfer berhasil"); // Menampilkan pesan transfer berhasil
+                        objekAkunNasabah.setSaldo(objekAkunNasabah.getSaldo() - jumlahTransfer);
+                        // Menampilkan pesan transfer berhasil
+                        System.out.println("\nTransfer berhasil");
                         // Menampilkan pesan informasi nomor rekening tujuan yang dimasukkan sebelumnya
                         System.out.println("Nomor Rekening Tujuan: " + nomorRekeningTujuan);
                         // Menampilkan pesan informasi jumlah transfer yang dimasukkan sebelumnya
                         System.out.println("Jumlah transfer: " + formatUang(jumlahTransfer));
                         // Menampilkan pesan informasi saldo akun nasabah yang sedang login setelah melakukan transfer
-                        System.out.println("Saldo anda saat ini adalah: " + formatUang(akunNasabah.getSaldo()));
-                        break; // Perulangan dihentikan
+                        System.out.println("Saldo anda saat ini adalah: " + formatUang(objekAkunNasabah.getSaldo()));
+                        break; // Perulangan dihentikan dengan keyword break
                     } else {
                         // Menampilkan pesan jika jumlah transfer lebih besar dari saldo yang ada
                         System.out.println("\nMaaf, saldo anda tidak mencukupi");
-                        break; // Perulangan dihentikan
+                        break; // Perulangan dihentikan dihentikan dengan keyword break
                     }
                 } else {
                     // Menampilkan pesan jika jumlah transfer kurang dari 100.000

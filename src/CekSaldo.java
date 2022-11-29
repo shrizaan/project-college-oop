@@ -4,7 +4,9 @@
  * Class ini dipakai ketika user memilih menu cek saldo.
  * Class ini memiliki attribute saldoObjekNasabah bertipe int yang digunakan
  * untuk menyimpan saldo dari akun nasabah yang sedang login.
- * Class ini memiliki method prosesTransaksi yang merupakan method dari superclass Transaksi yang merupakan class abstract.
+ *
+ * Class ini memiliki method prosesTransaksi yang merupakan
+ * method dari superclass Transaksi yang merupakan class abstract.
  * Method prosesTransaksi ini dibuat ulang untuk menyesuaikan dengan fitur cek saldo.
  */
 public class CekSaldo extends Transaksi {
@@ -29,7 +31,8 @@ public class CekSaldo extends Transaksi {
 
     /**
      * Fungsi dari method ini adalah untuk menampilkan saldo dari akun nasabah yang sedang login
-     * Mengembalikan / return saldoObjekNasabah yang merupakan saldo dari akun nasabah yang sedang login
+     * Mengembalikan / return saldoObjekNasabah yang merupakan saldo
+     * dari akun nasabah yang sedang login
      */
     public int getSaldoObjekNasabah() {
         return saldoObjekNasabah;
@@ -41,9 +44,7 @@ public class CekSaldo extends Transaksi {
      * Method ini dibuat ulang untuk menyesuaikan dengan fitur cek saldo.
      */
     public void prosesTransaksi() {
-        AkunNasabah akunNasabah = getObjAkunNasabah();
-
-        setSaldoObjekNasabah(akunNasabah.getSaldo());
+        setSaldoObjekNasabah(objekAkunNasabah.getSaldo());
         System.out.println("\nSaldo anda saat ini adalah: " + formatUang(getSaldoObjekNasabah()));
     }
 }

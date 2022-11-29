@@ -7,11 +7,14 @@ import java.util.ArrayList;
  */
 
 public class DatabaseAkun {
-    // alasan kami menggunakan tipe data arraylist karena tipe data arraylist lebih mudah untuk
-    // di manipulasi seperti menambahkan data tanpa perlu mengkhawatirkan ukuran array nya.
-    // selain itu alasan kami tidak menjadi kannya sebagai attribute
-    // karena kami ingin variabel ini tidak dapat diakses oleh class lain.
-    // alasan array bertipe Akun suapaya dapat menyimpan object yang dibuat dari class AkunNasabah dan juga class AkunAdmin
+    /**
+     * alasan kami menggunakan tipe data arraylist karena tipe data arraylist lebih mudah untuk
+     * di manipulasi seperti menambahkan data tanpa perlu mengkhawatirkan ukuran array nya.
+     * selain itu alasan kami tidak menjadi kannya sebagai attribute
+     * karena kami ingin variabel ini tidak dapat diakses oleh class lain.
+     * alasan array bertipe Akun suapaya dapat menyimpan object yang
+     * dibuat dari class AkunNasabah dan juga class AkunAdmin
+     */
     private ArrayList<Akun> databaseAkun = new ArrayList<>(); // array bertipe Akun
 
     public DatabaseAkun() {
@@ -33,7 +36,8 @@ public class DatabaseAkun {
     /**
      * Fungsi dari method ini adalah untuk mengembalikan nilai dari attribute databaseAkun
      * Dengan menggunakan parameter nomorRekening dan pin yang nilai nya adalah inputan dari user
-     * Method ini akan memanggil method validasiNomorRekening dan validasiPin pada class AkunNasabah dan AkunAdmin
+     * Method ini akan memanggil method validasiNomorRekening dan validasiPin
+     * pada class AkunNasabah dan AkunAdmin
      */
     public Akun getAkun(String nomorRekening, String pin) {
         // melakukan perulangan for each yang mana setiap nilai pada array databaseAkun
@@ -47,7 +51,8 @@ public class DatabaseAkun {
                 return akun;
             }
         }
-        // jika nilai argument nya tidak cocok dengan nilai yang ada di attribute objek akun atau yang ada di database akun
+        // jika nilai argument nya tidak cocok dengan nilai yang ada
+        // di attribute objek akun atau yang ada di database akun
         // maka kembalikan null
         return null;
     }
