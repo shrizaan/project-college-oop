@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class TarikTunai extends Transaksi {
     private int jumlahPenarikan;
     private int konfirmasiJumlahPenarikan;
+
     public TarikTunai(AkunNasabah objekAkunNasabah) {
         super(objekAkunNasabah);
     }

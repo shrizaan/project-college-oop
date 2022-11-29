@@ -1,3 +1,3 @@
 public interface ValidasiNomorRekening {
-    public boolean validasiNomorRekening(String nomorRekening);
+    public abstract boolean validasiNomorRekening(String nomorRekening);
 }

@@ -1,6 +1,5 @@
 public class Akun implements ValidasiNomorRekening, ValidasiPin {
     private String username;
-
     private String nomorRekening;
     private String pin; //
 

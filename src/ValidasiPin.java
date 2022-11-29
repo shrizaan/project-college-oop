@@ -1,3 +1,3 @@
 public interface ValidasiPin {
-    public boolean validasiPin(String pin);
+    public abstract boolean validasiPin(String pin);
 }
