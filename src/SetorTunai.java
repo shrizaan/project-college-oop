@@ -66,7 +66,7 @@ public class SetorTunai extends Transaksi {
                     // Menambahkan jumlah setoran ke saldo akun nasabah yang sedang login sekarang
                     // dengan menggunakan method setSaldo
                     objekAkunNasabah.setSaldo(objekAkunNasabah.getSaldo() + jumlahSetoran);
-                    System.out.println("Setoran berhasil"); // Menampilkan pesan setoran berhasil
+                    System.out.println("\nSetoran berhasil"); // Menampilkan pesan setoran berhasil
                     // Menampilkan jumlah setoran dengan memanggil method formatUang
                     // supaya formatnya menjadi rupiah
                     System.out.println("Jumlah setoran: " + formatUang(jumlahSetoran));
