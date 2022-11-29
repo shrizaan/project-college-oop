@@ -6,6 +6,7 @@
  */
 public class AkunNasabah extends Akun
 {
+    // Class AkunNasabah memiliki attribute saldo bertipe double yang digunakan untuk menyimpan saldo dari nasabah.
     private int saldo;
 
     /**
@@ -31,7 +32,8 @@ public class AkunNasabah extends Akun
      * menerima parameter berupa nilai saldo
      */
     public void setSaldo(int totalSaldo) {
-            this.saldo = totalSaldo;
+
+        this.saldo = totalSaldo;
     }
 }
 

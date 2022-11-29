@@ -16,6 +16,16 @@ import java.text.DecimalFormat; // digunakan untuk mengubah format angka menjadi
 
 public abstract class Transaksi implements FormatUang {
     // membuat object dari class DecimalFormat untuk mengubah format angka menjadi format mata uang rupiah
+    DecimalFormat formatUangRupiah = new DecimalFormat("'Rp'###,##0.00");
+
+    /**
+     * Attribute objekAkunNasabah bertipe AkunNasabah digunakan untuk menyimpan object dari class AkunNasabah
+     * yang akan digunakan untuk melakukan transaksi
+     * Kenapa harus ada attribute objekAkunNasabah?
+     * Supaya class Transaksi dan class turunannya bisa mengakses attribute dari class AkunNasabah yang sedang login sekarang
+     */
+    protected AkunNasabah objekAkunNasabah ;
+
     /**
      * Fungsi dari constructor ini adalah untuk membuat object dari class Transaksi
      * Dengan parameter objekAkunNasabah bertipe AkunNasabah,
@@ -25,15 +35,7 @@ public abstract class Transaksi implements FormatUang {
         this.objekAkunNasabah = objekAkunNasabah;
     }
 
-    DecimalFormat formatUangRupiah = new DecimalFormat("'Rp'###,##0.00");
 
-    /**
-     * Attribute objekAkunNasabah bertipe AkunNasabah digunakan untuk menyimpan object dari class AkunNasabah
-     * yang akan digunakan untuk melakukan transaksi
-     * Kenapa harus ada attribute objekAkunNasabah?
-     * Supaya class Transaksi dan class turunannya bisa mengakses attribute dari class AkunNasabah yang sedang login sekarang
-     */
-    private AkunNasabah objekAkunNasabah ;
 
     /**
      * Fungsi dari method ini adalah untuk mengembalikan nilai dari attribute objekAkunNasabah
